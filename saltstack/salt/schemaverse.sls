@@ -21,7 +21,7 @@ postgresql:
 
 /etc/postgresql/9.6/main/pg_hba.conf:
   file.managed:
-    - content: |
+    - contents: |
         local   all             postgres                                peer
         local   all             postgres                                md5
         host    schemaverse     schemaverse     ::1/128                 trust
