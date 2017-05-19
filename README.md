@@ -5,6 +5,7 @@ git clone https://github.com/KWKdesign/vagrant-schemaverse.git
 cd salt-schemaverse
 vagrant up
 vagrant ssh
+sudo su
 salt-call --local state.apply
 ```
 
