@@ -14,7 +14,7 @@ postgresql:
   pkg.installed:
     - name: postgresql
   service.running:
-    - enabled: True
+    - enable: True
     - restart: True
     - watch:
       - pkg: postgresql
