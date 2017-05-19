@@ -24,9 +24,11 @@ postgresql:
     - contents: |
         local   all             postgres                                peer
         local   all             postgres                                md5
+        host    schemaverse     schemaverse     127.0.0.1/32            trust
         host    schemaverse     schemaverse     ::1/128                 trust
         host    schemaverse     +players        0.0.0.0/0               md5
         host    schemaverse     +players        ::1/128                 trust
+        host    schemaverse     +players        127.0.0.1/32            trust
 
 schemaverse_iptables_http:
   iptables.append:
@@ -75,6 +77,13 @@ schemaverse_run_sqitch:
     - name: sqitch deploy
     - cwd: /srv/schemaverse/schema
     - user: schemaverse
+
+schemaverse_hell_csv_dir:
+  file.managed:
+    - directory
+    - name: /hell
+    - user: postgres
+    - group: postgres
 
 tic_perl_packages:
   pkg.installed:
