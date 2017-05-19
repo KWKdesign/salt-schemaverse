@@ -48,3 +48,37 @@ http://github.com/KWKdesign/Schemaverse.git:
   git.latest:
     - target: /srv/schemaverse
     - user: root
+
+create_schemaverse_user:
+  user.present:
+    - name: schemaverse
+
+create_schemaverse_db_user:
+  postgres_user.present:
+    - name: schemaverse
+    - superuser: True
+    - login: True
+    - inherit: False
+    - createdb: True
+    - createroles: True
+    - user: postgres
+
+create_schemaverse_db:
+  postgres_database.present:
+    - name: schemaverse
+
+sqitch:
+  pkg.installed
+
+schemaverse_run_sqitch:
+  cmd.run:
+    - name: sqitch deploy
+    - cwd: /srv/schemaverse/schema
+    - user: schemaverse
+
+tic_perl_packages:
+  pkg.installed:
+    - names:
+      - libanyevent-perl
+      - libdata-dump-perl
+
