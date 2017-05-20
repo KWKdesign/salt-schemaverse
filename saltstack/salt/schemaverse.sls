@@ -46,10 +46,18 @@ github.com:
     - user: root
     - fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
 
-http://github.com/KWKdesign/Schemaverse.git:
-  git.latest:
-    - target: /srv/schemaverse
-    - user: root
+/srv/schemaverse:
+  file.directory:
+    - user: schemaverse
+    - group: schemaverse
+
+schemaverse_clone_github:
+  cmd.run:
+    - name: git clone https://github.com/KWKdesign/Schemaverse.git .
+    - cwd: /srv/schemaverse
+    - runas: schemaverse
+    - require:
+      - file: /srv/schemaverse
 
 create_schemaverse_user:
   user.present:
@@ -77,6 +85,8 @@ schemaverse_run_sqitch:
     - name: sqitch deploy
     - cwd: /srv/schemaverse/schema
     - user: schemaverse
+    - requires:
+      - cmd: schemaverse_clone_github
 
 schemaverse_hell_csv_dir:
   file.directory:

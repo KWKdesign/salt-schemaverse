@@ -6,3 +6,4 @@ common_packages:
       - vim
       - screen
       - pv
+      - git-core
