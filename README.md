@@ -7,6 +7,9 @@ vagrant up
 vagrant ssh
 sudo su
 salt-call --local state.apply
+screen -S tic
+cd /srv/schemaverse
+sudo -uschemaverse perl tic.pl
 ```
 
 ## TODO
