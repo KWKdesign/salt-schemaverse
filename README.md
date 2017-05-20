@@ -1,5 +1,7 @@
 # Vagrant Schemaverse
 
+## Set up
+
 ```bash
 git clone https://github.com/KWKdesign/vagrant-schemaverse.git
 cd vagrant-schemaverse
