@@ -79,8 +79,7 @@ schemaverse_run_sqitch:
     - user: schemaverse
 
 schemaverse_hell_csv_dir:
-  file.managed:
-    - directory
+  file.directory:
     - name: /hell
     - user: postgres
     - group: postgres
