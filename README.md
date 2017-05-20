@@ -19,13 +19,13 @@ sudo -uschemaverse perl tic.pl
 ### Install difficult ai
 
 ```bash
-salt-call --local state.apply schemaverse-ai '{username: "kwksilver"}'
+salt-call --local state.apply schemaverse-ai
 ```
 
 ### Install lame ai
 
 ```bash
-salt-call --local state.apply schemaverse-ai-example '{username: "lamebot"}
+salt-call --local state.apply schemaverse-ai-example
 ```
 
 ### Install schemaverse-ships
